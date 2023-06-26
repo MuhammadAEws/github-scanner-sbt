@@ -35,7 +35,12 @@ scalacOptions ++= List(
 ) ++ (if (scalaVersion.value startsWith "2.10.") List("-target:jvm-1.6") else List.empty)
 
 libraryDependencies += "org.scalariform" %% "scalariform" % "0.2.10"
-
+libraryDependencies ++= Seq(
+  org.apache.derby % derby % 10.4.1.3,
+  com.fasterxml.jackson.core % jackson-core % 2.15.2,
+  com.fasterxml.jackson.core % jackson-databind % 2.9.8,
+  org.yaml % snakeyaml % 1.23
+)
 com.typesafe.sbt.SbtScalariform.ScalariformKeys.preferences := {
   import scalariform.formatter.preferences._
   FormattingPreferences()
